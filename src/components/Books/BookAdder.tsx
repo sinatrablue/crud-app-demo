@@ -27,8 +27,11 @@ export default function BookAdder() {
   return (
     <div className="d-flex flex-column justify-content-center align-items-center gap-3 py-5">
       <h1 className="d-flex align-items-baseline w-75 mb-5">
-        <div className="d-flex me-3 fs-1">
-          <Link to={"/books"}>
+        <div className="d-flex me-4 fs-1">
+          <Link
+            to={"/books"}
+            style={{ textDecoration: "none", color: "#00838d" }}
+          >
             <BsArrowLeftSquareFill />
           </Link>
         </div>
