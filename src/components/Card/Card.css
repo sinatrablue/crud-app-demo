@@ -21,7 +21,7 @@
   top: 0;
   right: 0;
   background-color: #00838d;
-  border-radius: 0 4px 0 32px;
+  border-radius: 0 8px 0 32px;
 }
 
 .go-arrow {
@@ -36,7 +36,7 @@
   position: relative;
   width: 100%;
   background-color: #f2f8f9;
-  border-radius: 4px;
+  border-radius: 8px;
   padding: 32px 24px;
   text-decoration: none;
   z-index: 0;
@@ -59,7 +59,7 @@
 }
 
 .custom-card1:hover:before {
-  transform: scale(60);
+  transform: scale(65);
 }
 
 .custom-card1:hover p {

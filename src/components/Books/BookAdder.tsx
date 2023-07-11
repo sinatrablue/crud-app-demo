@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { BookProps } from "./BooksList";
 import { Button } from "react-bootstrap";
 import { BsArrowLeftSquareFill, BsFillPlusSquareFill } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
+import { BookProps } from "../../data/BooksListData";
 
 export default function BookAdder() {
   const [input, setInput] = useState<BookProps>({

@@ -3,31 +3,10 @@ import Button from "../Button/Button";
 import Card from "../Card/Card";
 import { Link } from "react-router-dom";
 import { Button as ButtonBs, Modal } from "react-bootstrap";
-
-export type BookProps = {
-  isbn: number;
-  title: string;
-  author: string;
-};
+import { BookProps, DefaultBooks } from "../../data/BooksListData";
 
 export default function BooksList() {
-  const [books, setBooks] = useState<BookProps[]>([
-    {
-      isbn: Math.floor(Math.random() * 100000000),
-      title: "Clichés sur les hispaniques",
-      author: "François Vicq",
-    },
-    {
-      isbn: Math.floor(Math.random() * 100000000),
-      title: "Dissertation sur les poissons morts",
-      author: "Gabriel 'Gabz' Mouget",
-    },
-    {
-      isbn: Math.floor(Math.random() * 100000000),
-      title: "Un jour j'étais avec une meuf...",
-      author: "Diégo 'Diegz' Del Castillos",
-    },
-  ]);
+  const [books, setBooks] = useState<BookProps[]>(DefaultBooks);
 
   const [showModal, setShowModal] = useState<boolean>(false);
   const handleCloseModal = () => setShowModal(false);
@@ -54,7 +33,7 @@ export default function BooksList() {
 
   return (
     <>
-      <div className="d-flex flex-column justify-content-center align-items-center gap-3 p-3">
+      <div className="d-flex flex-column justify-content-center align-items-center gap-3 py-5">
         <h1 className="d-flex justify-content-between w-75 mb-5">
           <div>Books List</div>
           <Link to="/books/add">
