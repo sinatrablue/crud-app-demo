@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Button } from "react-bootstrap";
-import { BsArrowLeftSquareFill, BsFillPlusSquareFill } from "react-icons/bs";
+import { BsArrowLeftSquareFill } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import { BookProps } from "../../data/BooksListData";
+import Button from "../Button/Button";
+import { useBookContext } from "../../contexts/BookContext";
 
 export default function BookAdder() {
   const [input, setInput] = useState<BookProps>({
@@ -12,9 +13,14 @@ export default function BookAdder() {
   });
 
   const navigate = useNavigate();
+  const { addBook } = useBookContext();
 
-  const addBook = () => {
-    console.log("add book");
+  const addNewBook = () => {
+    if (input.title === "" || input.author === "") {
+      window.alert("Please fill in all fields");
+      return;
+    }
+    addBook({ ...input, isbn: Math.floor(Math.random() * 1000000) });
     navigate("/books");
   };
 
@@ -54,15 +60,10 @@ export default function BookAdder() {
       </div>
       <div className="d-flex w-75 justify-content-end">
         <Button
-          className="d-flex align-items-baseline fs-5 px-3 py-2"
-          variant="secondary"
-          onClick={() => addBook()}
-        >
-          <span className="me-2">
-            <BsFillPlusSquareFill />
-          </span>
-          Add Book
-        </Button>
+          variant="create"
+          onClick={() => addNewBook()}
+          title="add this new book"
+        />
       </div>
     </div>
   );

@@ -18,11 +18,7 @@ export default function BooksList() {
         <h1 className="d-flex justify-content-between w-75 mb-5">
           <div>Books List</div>
           <Link to="/books/add">
-            <Button
-              title="add a book"
-              onClick={() => console.log("add book")}
-              variant="create"
-            />
+            <Button title="add a book" variant="create" />
           </Link>
         </h1>
         <div className="d-flex flex-column w-75 gap-3">

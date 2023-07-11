@@ -2,7 +2,7 @@ import "./Button.css";
 
 export type ButtonProps = {
   title: string;
-  onClick: () => void;
+  onClick?: () => void;
   variant?: "create" | "delete" | "update" | "read";
 };
 

@@ -13,6 +13,7 @@ type BookContextProps = {
   handleCloseModal: () => void;
   currentBook: BookProps;
   setcurrentBook: (currentBook: BookProps) => void;
+  addBook: (book: BookProps) => void;
   modifyBook: (book: BookProps) => void;
   deleteBook: (book: BookProps) => void;
   updateSelectedBook: () => void;
@@ -32,6 +33,9 @@ export function BooksProvider({ children }: BooksProviderProps) {
     title: "",
     author: "",
   });
+  const addBook = (book: BookProps) => {
+    setBooks(prev => [...prev, book]);
+  };
   const modifyBook = (book: BookProps) => {
     setcurrentBook(book);
     setShowModal(true);
@@ -61,6 +65,7 @@ export function BooksProvider({ children }: BooksProviderProps) {
         handleCloseModal,
         currentBook,
         setcurrentBook,
+        addBook,
         modifyBook,
         deleteBook,
         updateSelectedBook,
