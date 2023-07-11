@@ -1,4 +1,5 @@
-import { BookProps } from "../Books/BooksList";
+import { BsBook } from "react-icons/bs";
+import { BookProps } from "../../data/BooksListData";
 import "./Card.css";
 
 export default function Card(props: BookProps) {
@@ -10,7 +11,9 @@ export default function Card(props: BookProps) {
           {props.isbn} - {props.author}
         </p>
         <div className="go-corner">
-          <div className="go-arrow">→</div>
+          <div className="go-arrow">
+            <BsBook />
+          </div>
         </div>
       </a>
     </div>
