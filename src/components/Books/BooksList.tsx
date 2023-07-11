@@ -111,7 +111,7 @@ export default function BooksList() {
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <ButtonBs variant="primary" onClick={() => updateSelectedBook()}>
+          <ButtonBs variant="secondary" onClick={() => updateSelectedBook()}>
             Save changes
           </ButtonBs>
         </Modal.Footer>

@@ -55,7 +55,7 @@ export default function BookAdder() {
       <div className="d-flex w-75 justify-content-end">
         <Button
           className="d-flex align-items-baseline fs-5 px-3 py-2"
-          variant="primary"
+          variant="secondary"
           onClick={() => addBook()}
         >
           <span className="me-2">
