@@ -1,35 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Button from "../Button/Button";
-import Card from "../Card/Card";
 import { Link } from "react-router-dom";
 import { Button as ButtonBs, Modal } from "react-bootstrap";
-import { BookProps, DefaultBooks } from "../../data/BooksListData";
+import { BookProps } from "../../data/BooksListData";
+import BookListContextMenu from "../ContextMenu/ContextMenu";
+import { BookContext } from "../../contexts/BookContext";
 
 export default function BooksList() {
-  const [books, setBooks] = useState<BookProps[]>(DefaultBooks);
-
-  const [showModal, setShowModal] = useState<boolean>(false);
-  const handleCloseModal = () => setShowModal(false);
-
-  const [input, setInput] = useState<BookProps>({
-    isbn: 0,
-    title: "",
-    author: "",
-  });
-
-  const modifyBook = (book: BookProps) => {
-    setInput(book);
-    setShowModal(true);
-  };
-
-  const updateSelectedBook = () => {
-    setBooks(prev => {
-      const index = prev.findIndex(book => book.isbn === input.isbn);
-      prev[index] = input;
-      return prev;
-    });
-    setShowModal(false);
-  };
+  const books = useContext(BookContext);
 
   return (
     <>
@@ -46,14 +24,18 @@ export default function BooksList() {
         </h1>
         <div className="d-flex flex-column w-75 gap-3">
           {books.map(book => (
-            <div onClick={() => modifyBook(book)} key={book.isbn}>
-              <Card isbn={book.isbn} title={book.title} author={book.author} />
+            <div key={book.isbn}>
+              <BookListContextMenu
+                isbn={book.isbn}
+                title={book.title}
+                author={book.author}
+              />
             </div>
           ))}
         </div>
       </div>
 
-      <Modal
+      {/* <Modal
         show={showModal}
         onHide={handleCloseModal}
         backdrop="static"
@@ -94,7 +76,7 @@ export default function BooksList() {
             Save changes
           </ButtonBs>
         </Modal.Footer>
-      </Modal>
+      </Modal> */}
     </>
   );
 }
