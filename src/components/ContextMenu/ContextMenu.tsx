@@ -2,18 +2,11 @@ import * as ContextMenu from "@radix-ui/react-context-menu";
 import "./ContextMenu.css";
 import Card from "../Card/Card";
 import { BookProps } from "../../data/BooksListData";
-import { TbEdit } from "react-icons/tb";
-import { FiDelete } from "react-icons/fi";
+import { TbEdit, TbHttpDelete } from "react-icons/tb";
+import { useBookContext } from "../../contexts/BookContext";
 
 export default function BookListContextMenu(props: BookProps) {
-  const editBook = (book: BookProps) => () => {
-    console.log("edit book", book);
-  };
-
-  const deleteBook = (book: BookProps) => () => {
-    console.log("delete book", book);
-  };
-
+  const { modifyBook, deleteBook } = useBookContext();
   return (
     <ContextMenu.Root>
       <ContextMenu.Trigger className="ContextMenuTrigger">
@@ -23,7 +16,7 @@ export default function BookListContextMenu(props: BookProps) {
         <ContextMenu.Content className="ContextMenuContent">
           <ContextMenu.Item
             className="ContextMenuItem"
-            onClick={editBook(props)}
+            onClick={() => modifyBook(props)}
           >
             Edit
             <div className="RightSlot">
@@ -32,11 +25,11 @@ export default function BookListContextMenu(props: BookProps) {
           </ContextMenu.Item>
           <ContextMenu.Item
             className="ContextMenuItem"
-            onClick={deleteBook(props)}
+            onClick={() => deleteBook(props)}
           >
             Delete
             <div className="RightSlot">
-              <FiDelete />
+              <TbHttpDelete />
             </div>
           </ContextMenu.Item>
         </ContextMenu.Content>

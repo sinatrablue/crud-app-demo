@@ -3,23 +3,19 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import BooksList from "./components/Books/BooksList";
 import BookAdder from "./components/Books/BookAdder";
 import "./App.css";
-import { BookContext } from "./contexts/BookContext";
-import { BookProps, DefaultBooks } from "./data/BooksListData";
-import { useState } from "react";
+import { BooksProvider } from "./contexts/BookContext";
 
 function App() {
-  const [books, setBooks] = useState<BookProps[]>(DefaultBooks);
-
   return (
     <Container>
-      <BookContext.Provider value={books}>
+      <BooksProvider>
         <BrowserRouter>
           <Routes>
             <Route path="/books" element={<BooksList />} />
             <Route path="/books/add" element={<BookAdder />} />
           </Routes>
         </BrowserRouter>
-      </BookContext.Provider>
+      </BooksProvider>
     </Container>
   );
 }
